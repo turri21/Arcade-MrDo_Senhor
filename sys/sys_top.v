@@ -19,6 +19,8 @@
 //
 //============================================================================
 
+`default_nettype none
+
 module sys_top
 (
 	/////////// CLOCK //////////
@@ -44,16 +46,16 @@ module sys_top
 	input         HDMI_TX_INT,
 
 	//////////// SDR ///////////
-	output [12:0] SDRAM_A,
-	inout  [15:0] SDRAM_DQ,
+//	output [12:0] SDRAM_A,
+//	inout  [15:0] SDRAM_DQ,
 //	output        SDRAM_DQML,
 //	output        SDRAM_DQMH,
-	output        SDRAM_nWE,
-	output        SDRAM_nCAS,
-	output        SDRAM_nRAS,
-	output        SDRAM_nCS,
-	output  [1:0] SDRAM_BA,
-	output        SDRAM_CLK,
+//	output        SDRAM_nWE,
+//	output        SDRAM_nCAS,
+//	output        SDRAM_nRAS,
+//	output        SDRAM_nCS,
+//	output  [1:0] SDRAM_BA,
+//	output        SDRAM_CLK,
 //	output        SDRAM_CKE,
 
 `ifdef MISTER_DUAL_SDRAM
@@ -143,7 +145,7 @@ wire BTN_RESET = 1'b1, BTN_OSD = 1'b1, BTN_USER = 1'b1;
 /////////////////////////////////////////////////////////////////////////
 
 //////////////////////  Secondary SD  ///////////////////////////////////
-wire SD_CS, SD_CLK, SD_MOSI, SD_MISO, SD_CD;
+//wire SD_CS, SD_CLK, SD_MOSI, SD_MISO, SD_CD;
 
 //`ifndef MISTER_DUAL_SDRAM
 //	assign SD_CD       = mcp_en ? mcp_sdcd : SDCD_SPDIF;
@@ -1537,7 +1539,7 @@ end
 //	assign AUDIO_L     = av_dis ? 1'bZ : (SW[0] | mcp_en) ? HDMI_SCLK  : analog_l;
 `endif
 
-assign HDMI_MCLK = clk_audio;
+//assign HDMI_MCLK = clk_audio;
 wire clk_audio;
 
 pll_audio pll_audio
@@ -1803,16 +1805,16 @@ emu emu
 	.DDRAM_BE(ram_byteenable),
 	.DDRAM_WE(ram_write),
 
-	.SDRAM_DQ(SDRAM_DQ),
-	.SDRAM_A(SDRAM_A),
+//	.SDRAM_DQ(SDRAM_DQ),
+//	.SDRAM_A(SDRAM_A),
 //	.SDRAM_DQML(SDRAM_DQML),
 //	.SDRAM_DQMH(SDRAM_DQMH),
-	.SDRAM_BA(SDRAM_BA),
-	.SDRAM_nCS(SDRAM_nCS),
-	.SDRAM_nWE(SDRAM_nWE),
-	.SDRAM_nRAS(SDRAM_nRAS),
-	.SDRAM_nCAS(SDRAM_nCAS),
-	.SDRAM_CLK(SDRAM_CLK),
+//	.SDRAM_BA(SDRAM_BA),
+//	.SDRAM_nCS(SDRAM_nCS),
+//	.SDRAM_nWE(SDRAM_nWE),
+//	.SDRAM_nRAS(SDRAM_nRAS),
+//	.SDRAM_nCAS(SDRAM_nCAS),
+//	.SDRAM_CLK(SDRAM_CLK),
 //	.SDRAM_CKE(SDRAM_CKE),
 
 `ifdef MISTER_DUAL_SDRAM
@@ -1830,11 +1832,11 @@ emu emu
 	.BUTTONS(btn),
 	.OSD_STATUS(osd_status),
 
-	.SD_SCK(SD_CLK),
-	.SD_MOSI(SD_MOSI),
-	.SD_MISO(SD_MISO),
-	.SD_CS(SD_CS),
-	.SD_CD(SD_CD),
+//	.SD_SCK(SD_CLK),
+//	.SD_MOSI(SD_MOSI),
+//	.SD_MISO(SD_MISO),
+//	.SD_CS(SD_CS),
+//	.SD_CD(SD_CD),
 
 	.UART_CTS(uart_rts),
 	.UART_RTS(uart_cts),
